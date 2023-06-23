@@ -1,0 +1,18 @@
+h1{
+    color:rgb(213, 73, 167);
+}
+
+.paragraph {
+    border: 6px solid rgb(211, 98, 162);
+    border-radius: 10px;
+    font-size: 30px;
+    background: rgba(169, 203, 84, 0.37);
+    padding: 8px;
+}
+
+.text{
+    font-size: 24px;
+    color: rgba(114, 189, 164, 0.619);
+    text-align: center;
+    font-style: italic;
+}
