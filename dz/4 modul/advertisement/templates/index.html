@@ -2,16 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  {% load static %}
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
   <title>{% block title %}Main{% endblock %}</title>
-<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1mc4_11exruHtw0Sk_ZOMwEjOi91B-x9Knf9z6tT-6cUzxbGBqRATiK5MPAxcjUsJWHKaXG6mc14eNCcFoF217zOsRop1F0L-elB3YFa53YlIjxI7yjgUPJGEfW9O4_XFxsacQn2T780CmMQYEFXDCJwz627X-H-HFthx8TkPrOCFhg9egUEyHXdnnJlAMP9nYUwxsfoomQz0FXKR5vovQ4dD3FO48GeBvaD3nAL0aY9JEHktNmCTwJeTQR1hzhSc5iDXa_ueFMcEUr8-0uIqDHWIKVuwbVIm0Ua9r4OgV04vpjp9txb8ki-Ai3b12ZdsuGLkN8ZfZLf7e0vmf_muS8ezcn8a-fcgiKOjYmJHaVxsYFKPhQe1zKJnaqUDMhy" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9kb2MtMGstMG8tZG9jcy5nb29nbGV1c2VyY29udGVudC5jb20vZG9jcy9zZWN1cmVzYy91Z2YwbjJzYnMyOGxidW5xMjcyOXJxMWkzZzk5ZGNoai9hMjYxMDJ0N25hOXNrbzM5cGZsdnJlbWtucTQ0bDNsZC8xNjg5MDg1NTc1MDAwLzA0MDgwMjMyMDk4ODE3ODg1MDMyLzA4Njg0MjA4NTQ5MzUyNDgzNDEwWi8xT2pyRnR4cDVlMXRjTzNIRS1nbW5yX3F5Y1didEtzT3o_ZT1kb3dubG9hZCZ1dWlkPTUxMzNlMzNmLTFhM2UtNDI5OS04NzExLWIxZDRlYWQyNWY2ZA"/></head>
+</head>
 
 <body>
   {% block content %}
@@ -51,7 +49,7 @@
         </a>
       </li>
     </ul>
-    
+
     <div id="carouselExampleControls" class="carousel slide bg-primary" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -103,89 +101,35 @@
           </div>
         </form>
       </div>
+      {% for adv in advertisement %}
       <div class="col">
         <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
           <div class="row g-0">
             <div class="col-md-4">
               <a href="advertisement.html" class="nav-link">
-                <img src="{% static 'img/comercial.png' %}" class="img-fluid rounded-start" alt="Card title">
+                <img src="{%if adv.image != '1' %} {{ adv.image.url }} {% else %} {% static 'img/comercial.png'%} {%endif%}" class="img-fluid rounded-start" alt="Card title">
               </a>
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">
-                  <a href="advertisement.html" class="nav-link"><strong>Продаю балкон</strong></a>
+                  <a href="advertisement.html" class="nav-link"><strong>{{ adv.title }}</strong></a>
                 </h5>
                 <a href="advertisement.html" class="nav-link">
                   <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, nulla eos neque dolorum quis aliquid
-                    deleniti molestias, nobis debitis expedita, fugiat ea. Delectus harum quo dolores modi cupiditate in
-                    tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quis similique quas
-                    architecto doloremque culpa consequatur excepturi provident quo fugit repudiandae inventore quae ea
-                    sequi, recusandae aliquid veritatis rerum quibusdam?
+                    {{ adv.description }}
                   </p>
-                  <span>Автор: Никнейм автора объявления</span>
-                  <p class="card-text"><small class="text-muted">Размещено: здесь должна стоять дата</small></p>
+                  <span>Автор: {{ adv.user }}</span>
+                  <p class="card-text"><small class="text-muted">Размещено: {{ adv.created_date }}</small></p>
+                  <span>Цена: {{ adv.price }}</span>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <a href="advertisement.html" class="nav-link">
-                <img src="{% static 'img/comercial.png' %}" class="img-fluid rounded-start" alt="Card title">
-              </a>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <a href="advertisement.html" class="nav-link"><strong>Продам гараж</strong></a>
-                </h5>
-                <a href="advertisement.html" class="nav-link">
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, nulla eos neque dolorum quis aliquid
-                    deleniti molestias, nobis debitis expedita, fugiat ea. Delectus harum quo dolores modi cupiditate in
-                    tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quis similique quas
-                    architecto doloremque culpa consequatur excepturi provident quo fugit repudiandae inventore quae ea
-                    sequi, recusandae aliquid veritatis rerum quibusdam?
-                  </p>
-                  <span>Автор: Никнейм автора объявления</span>
-                  <p class="card-text"><small class="text-muted">Размещено: здесь должна стоять дата</small></p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <a href="advertisement.html" class="nav-link">
-                <img src="{% static 'img/comercial.png' %}" class="img-fluid rounded-start" alt="Card title">
-              </a>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <a href="advertisement.html" class="nav-link"><strong>Куплю баню</strong></a>
-                </h5>
-                <a href="advertisement.html" class="nav-link">
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, nulla eos neque dolorum quis aliquid
-                    deleniti molestias, nobis debitis expedita, fugiat ea. Delectus harum quo dolores modi cupiditate in
-                    tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quis similique quas
-                    architecto doloremque culpa consequatur excepturi provident quo fugit repudiandae inventore quae ea
-                    sequi, recusandae aliquid veritatis rerum quibusdam?
-                  </p>
-                  <span>Автор: Никнейм автора объявления</span>
-                  <p class="card-text"><small class="text-muted">Размещено: здесь должна стоять дата</small></p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
+
     </div>
     <footer style="padding: 100px;" class="bg-primary">
       <nav class="navbar navbar-expand-sm navbar-dark">
@@ -218,8 +162,8 @@
         </div>
       </nav>
     </footer>
-  
-  
+
+
   {% endblock %}
 </body>
 
