@@ -8,7 +8,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Общее', {
-            "fields": ("title", "description", "user", "image_form")
+            "fields": ("title", "description", "user", "image")
         }),
         ("Финансы", {
             "fields": ("price", "auction"),

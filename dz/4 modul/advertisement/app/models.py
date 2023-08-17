@@ -17,6 +17,7 @@ class Adverisement(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField("Изображение", upload_to="advertisement/")
 
+    @admin.display(description="Дата создания")
     def created_date(self):
         if self.created_ad.date() == timezone.now().date():
             created_time = self.created_ad.time().strftime("%H:%M:%S")
@@ -25,6 +26,7 @@ class Adverisement(models.Model):
             )
         return self.created_ad.strftime("%d:%m:%Y в %H:%M:%S")
 
+    @admin.display(description="Дата изменения")
     def updated_date(self):
         if self.updated_at.date() == timezone.now().date():
             updated_time = self.updated_at.time().strftime("%H:%M:%S")
@@ -33,9 +35,10 @@ class Adverisement(models.Model):
             )
         return self.updated_at.strftime("%d:%m:%Y в %H:%M:%S")
 
+    @admin.display(description="Картинка")
     def image_form(self):
         from django.utils import html
-        return html.format_html("<img scr='{}' alt='' style='width:50px; height:50px'>", self.image.url)
+        return html.format_html("<img src='{}' alt='' style='width:50px; height:50px'>", self.image.url)
 
 
 
