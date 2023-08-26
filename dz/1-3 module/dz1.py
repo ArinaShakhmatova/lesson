@@ -32,11 +32,11 @@
 #     f = str(a)+f
 #     s = s//7
 # print(f)
-for a in range(1,100):
-    for x in range(100):
-        for y in range(100):
-            if ((4*x + 3*y < a)or (x>=y)or (y>=13))==1:
-                print(a)
+# for a in range(1,100):
+#     for x in range(100):
+#         for y in range(100):
+#             if ((4*x + 3*y < a)or (x>=y)or (y>=13))==1:
+#                 print(a)
 
 # from turtle import*
 #
@@ -80,4 +80,78 @@ for a in range(1,100):
 #     y = int(r,2)
 #     if y>85:
 #         print(n)
+
+# print('x y z w')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             for w in range(2):
+#                 if not(((not(z==w)) <= (w and not(x))) + (x and not(y))):
+#                     print(x,y, z, w)
+
+# for n in range(1,1000):
+#     p = bin(n)[2:]
+#     if p.count('1')>p.count('0'):
+#         p+='1'
+#     else:
+#         p+='0'
+#     r = int(p, 2)
+#     if r>80:
+#         print(r)
+
+# from turtle import *
+#
+# r = 15
+#
+# tracer(0)
+#
+# for i in range(6):
+#     fd(13*r)
+#     rt(120)
+#
+# up()
+#
+# for x in range(-30,30):
+#     for y in range(-30, 30):
+#         goto(x*r, y*r)
+#         dot(3, 'pink')
+# update()
+# k=0
+# for i1 in 'abc':
+#     for i2 in 'abc':
+#         for i3 in 'abc':
+#             for i4 in 'abc':
+#                 for i5 in 'abcx':
+#                     s = i1+i2+i3+i4+i5
+#                     k+=1
+# print(k)
+
+# s='1'*82
+# while '11111' in s or '888' in s:
+#     if '11111' in s:
+#         s=s.replace('11111','88',1)
+#     else:
+#         s=s.replace('888','8',1)
+# print(s)
+# def f(n):
+#     if n == 1:
+#         return 1
+#     if n == 2:
+#         return 1
+#     if n>2:
+#         return f(n-2)*(n-1)
+# print(f(7))
+
+# s= 4**16 + 2**34 - 8
+# p = bin(s)[2:]
+# print(p.count('1'))
+
+# for a in range(100):
+#     k=0
+#     for x in range(100):
+#         for y in range(100):
+#             if (((x*y)<100) or (y>=a) or (x>a))==1:
+#                 k+=1
+#     if k == 10000:
+#         print(a)
 

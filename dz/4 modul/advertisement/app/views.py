@@ -6,15 +6,14 @@ from django.urls import reverse
 from django.shortcuts import redirect
 
 
-
 def index(request):
     advertisements = Adverisement.objects.all()
     context = {"advertisement": advertisements}
-    return render(request, "index.html", context)
+    return render(request, "app/index.html", context)
 
 
 def top_sellers(request):
-    return render(request, "top-sellers.html")
+    return render(request, "app/top-sellers.html")
 
 
 def advertisement_post(request):
@@ -29,18 +28,18 @@ def advertisement_post(request):
     else:
         form = AdvertisementForm()
     context = {'form': form}
-    return render(request, "advertisement-post.html", context)
+    return render(request, "app/advertisement-post.html", context)
 
 
 def register(request):
-    return render(request, "register.html")
+    return render(request, "app_auth/register.html")
 
 
 def login(request):
-    return render(request, "login.html")
+    return render(request, "app_auth/login.html")
 
 
 def profile(request):
-    return render(request, "profile.html")
+    return render(request, "app_auth/profile.html")
 
 
