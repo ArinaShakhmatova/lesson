@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils import timezone
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 
 
@@ -41,7 +42,8 @@ class Adverisement(models.Model):
         return html.format_html("<img src='{}' alt='' style='width:50px; height:50px'>", self.image.url)
 
 
-
+    def get_absolute_url(self):
+        return reverse('adv-detail', kwargs={'pk':self.pk})
 
     def __str__(self):
         return f"Advertisement(id={self.id}, title={self.title}, price={self.price})"

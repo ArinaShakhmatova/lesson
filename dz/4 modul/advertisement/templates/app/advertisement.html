@@ -1,29 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+  {% extends "base.html" %}
+  {% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/fontello.css">
-  <title>Advertisement</title>
-<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=MUKwvrLQTkDmZW08WCUuNo3UtzivSkNd-PhFzeAuhU-71zUdLB8YIY2rkMZWPNBf8cspP1dO5PqeWvPhETySnCngpr1ty_2407tSDJUAFpMcpA7vlNGfjStLyjL3dCBJk-dujGULKR_EI9hsIeuSiFUTS0wPzgp_g64zD4uhxhk_ZMNkwLmC0gFlsflbTpeZ3nDEquwIvftYmhEgX4ZLNt3Mx3cf93WJ7MZDYKacG6M5C0KiGWBBQLHCnmXrUIQyKsNnJnDa2dzi3np55G6FmPj21f0sRVeZeU4bW7D8HBX5miTxFDaO8VCeKUwplvQmfiy432Y-KU6-1dBJtkrbUUi2-2EmhEz24jqjgaTydUF2hIvLzuIGV3o6gFXaSfvr" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9kb2MtMDAtMG8tZG9jcy5nb29nbGV1c2VyY29udGVudC5jb20vZG9jcy9zZWN1cmVzYy91Z2YwbjJzYnMyOGxidW5xMjcyOXJxMWkzZzk5ZGNoai9qODYyZnFpdGlocnByNm9wYWl1cXBvMWc1czF1bnJ1ay8xNjg5MDg1NDI1MDAwLzA0MDgwMjMyMDk4ODE3ODg1MDMyLzA4Njg0MjA4NTQ5MzUyNDgzNDEwWi8xaEwwSER0b1lMVmN4Y3JOdExoOXEwU1hLb1FDWGdqTVA_ZT1kb3dubG9hZCZ1dWlkPWQxNjg2MTc4LTlmYjUtNGU4My1hNmY4LTYzMTg0YWQ4M2UyYg"/></head>
-
-<body>
+  {% block content %}
   <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{% url 'main-page' %}">
         <span style="font-weight: bold;">Главная</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="top-sellers.html"><span style="font-weight: bold;">Топ продавцов</span>
+      <a class="nav-link" href="{% url 'top_sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="advertisement-post.html">
+      <a class="nav-link" href="{% url 'advertisement_post' %}">
         <span style="font-weight: bold;">Разместить объявление</span>
       </a>
     </li>
@@ -59,27 +49,19 @@
       <div class="row g-0">
         <div class="col-md-4">
           <a href="#" class="nav-link">
-            <img src="img/adv.png" class="img-fluid rounded-start" alt="Card title">
+            <img src="{%if advertisement.image != '1' %} {{ advertisement.image.url }} {% else %} {% static 'img/comercial.png'%} {%endif%}" class="img-fluid rounded-start" alt="Card title">
           </a>
         </div>
         <div class="col">
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#" class="nav-link"><strong>Продам гараж</strong></a>
+              <a href="#" class="nav-link"><strong>{{ advertisement.title }}</strong></a>
             </h5>
             <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit eum aut commodi dolores
-              praesentium fugiat! Maxime perspiciatis iste, voluptas tenetur voluptatem at beatae, aliquid
-              libero odit ab accusamus tempore assumenda.
-              Hic asperiores pariatur recusandae sapiente doloremque illo laudantium placeat sed fugit!
-              Dolorem nulla quaerat doloremque odit impedit unde esse dolorum tenetur quos error! Iure
-              quas, illo expedita sed suscipit ullam.
-              Illo quam odio, quas laborum natus error doloremque totam maiores dolorum fugit aliquam, sit
-              numquam impedit praesentium facilis amet perspiciatis facere rem magnam consectetur, nobis
-              est. Qui quod fuga illum.
+              {{ advertisement.description }}
             </p>
-            <span>Автор: "username"</span>
-            <p class="card-text"><small class="text-muted">Размещено: "дата"</small></p>
+            <span>Автор: {{advertisement.user}}</span>
+            <p class="card-text"><small class="text-muted">Размещено: {{advertisement.created_date}}</small></p>
           </div>
         </div>
       </div>
@@ -117,6 +99,4 @@
     </nav>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+  {% endblock %}

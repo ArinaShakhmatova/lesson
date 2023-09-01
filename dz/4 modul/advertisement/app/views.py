@@ -1,19 +1,34 @@
 from django.shortcuts import render
 from .models import Adverisement
+from django.urls import reverse_lazy
 from .forms import AdvertisementForm
 from django.http import HttpResponse
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
-
+User = get_user_model()
 def index(request):
-    advertisements = Adverisement.objects.all()
-    context = {"advertisement": advertisements}
+    title = request.GET.get('query')
+    print(title)
+    if title:
+        advertisements = Adverisement.objects.filter(title__icontains=title)
+    else:
+        advertisements = Adverisement.objects.all()
+    context = {"advertisement": advertisements, title: title}
     return render(request, "app/index.html", context)
+
+
+def advertisements_detail(request, pk):
+    advertisement = Adverisement.objects.get(id=pk)
+    context = {"advertisement": advertisement}
+    return render(request, "app/advertisement.html", context)
 
 
 def top_sellers(request):
     return render(request, "app/top-sellers.html")
+
 
 
 def advertisement_post(request):
